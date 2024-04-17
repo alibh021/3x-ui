@@ -285,6 +285,7 @@ func (j *CheckClientIpJob) updateInboundClientIps(inboundClientIps *model.Inboun
 		if client.Email == clientEmail {
 			limitIp := client.LimitIP
 
+			
 		if limitIp < len(ips) && 0 < limitIp && inbound.Enable {
 			shouldCleanLog = true
 			j.disAllowedIps = append(j.disAllowedIps, ips...)
