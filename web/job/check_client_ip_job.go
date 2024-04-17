@@ -285,16 +285,13 @@ func (j *CheckClientIpJob) updateInboundClientIps(inboundClientIps *model.Inboun
 		if client.Email == clientEmail {
 			limitIp := client.LimitIP
 
-			if limitIp != 0 {
-				shouldCleanLog = true
-
-				if limitIp < len(ips) && inbound.Enable {
-					j.disAllowedIps = append(j.disAllowedIps, ips[limitIp:]...)
-					for i := limitIp; i < len(ips); i++ {
-						log.Printf("[LIMIT_IP] Email = %s || SRC = %s", clientEmail, ips[i])
+if limitIp < len(ips) && 0 < limitIp && inbound.Enable {
+					shouldCleanLog = true
+					j.disAllowedIps = append(j.disAllowedIps, ips...)
+					for _, ip := range ips {
+						log.Printf("[LIMIT_IP] Email = %s || SRC = %s", clientEmail, ip)
 					}
 				}
-			}
 		}
 	}
 
