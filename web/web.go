@@ -260,8 +260,8 @@ func (s *Server) startTask() {
 		s.cron.AddJob("@every 10s", job.NewXrayTrafficJob())
 	}()
 
-	// check client ips from log file every 1 min
-	s.cron.AddJob("@every 1m", job.NewCheckClientIpJob())
+	// check client ips from log file every 2 min
+	s.cron.AddJob("@every 2m", job.NewCheckClientIpJob())
 
 	// check client ips from log file every day
 	s.cron.AddJob("@daily", job.NewClearLogsJob())
